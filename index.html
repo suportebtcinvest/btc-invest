@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTC Invest</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0e0e0e;
+      color: #fff;
+    }
+    header, footer, nav, section {
+      padding: 20px;
+      text-align: center;
+    }
+    header {
+      background-color: #111;
+      border-bottom: 2px solid #0a84ff;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+      color: #0a84ff;
+    }
+    nav {
+      background-color: #1c1c1c;
+    }
+    nav a {
+      margin: 0 10px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .hero {
+      background-color: #121212;
+    }
+    .hero h2 {
+      font-size: 1.8em;
+    }
+    .hero button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1em;
+      background-color: #0a84ff;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .packages {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .package {
+      background-color: #1e1e1e;
+      padding: 20px;
+      width: 90%;
+      max-width: 300px;
+      border-radius: 10px;
+      border: 1px solid #333;
+    }
+    .package h3 {
+      color: #0a84ff;
+    }
+    .package a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #0a84ff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .service p {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    input[type="text"], input[type="password"] {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+    input[type="submit"] {
+      background-color: #0a84ff;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .dashboard {
+      display: none;
+      background-color: #1e1e1e;
+      padding: 20px;
+      max-width: 600px;
+      margin: 20px auto;
+      border-radius: 10px;
+    }
+    .dashboard h2 {
+      color: #0a84ff;
+    }
+    .dashboard p {
+      line-height: 1.6;
+    }
+    footer {
+      background-color: #1c1c1c;
+      font-size: 0.9em;
+      color: #aaa;
+    }
+  </style>
+  <script>
+    function simularLogin(event) {
+      event.preventDefault();
+      document.getElementById("login").style.display = "none";
+      document.getElementById("dashboard").style.display = "block";
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>BTC Invest</h1>
+    <p>Sua porta de entrada para rendimentos inteligentes</p>
+  </header>
+
+  <nav>
+    <a href="#">Início</a>
+    <a href="#pacotes">Pacotes</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#cadastro">Cadastro</a>
+    <a href="#login">Login</a>
+    <a href="#contato">Contato</a>
+  </nav>
+
+  <section class="hero">
+    <h2>Invista com segurança e retorno garantido</h2>
+    <a href="https://t.me/Suportbtcinvest"><button>Quero investir hoje</button></a>
+  </section>
+
+  <section class="packages" id="pacotes">
+    <div class="package">
+      <h3>Pacote R$500</h3>
+      <p>Retorno estimado de até 8% ao mês.</p>
+      <a href="https://t.me/Suportbtcinvest">Quero investir</a>
+    </div>
+    <div class="package">
+      <h3>Pacote R$1000</h3>
+      <p>Retorno estimado de até 8% ao mês.</p>
+      <a href="https://t.me/Suportbtcinvest">Quero investir</a>
+    </div>
+    <div class="package">
+      <h3>Pacote R$1500</h3>
+      <p>Retorno estimado de até 8% ao mês.</p>
+      <a href="https://t.me/Suportbtcinvest">Quero investir</a>
+    </div>
+    <div class="package">
+      <h3>Pacote R$3000</h3>
+      <p>Retorno estimado de até 8% ao mês.</p>
+      <a href="https://t.me/Suportbtcinvest">Quero investir</a>
+    </div>
+  </section>
+
+  <section class="service" id="servicos">
+    <p>Operamos no mercado financeiro de forma mais segura possível, pagamos até 8% ao mês, somos uma equipe com mais de 10 anos de mercado onde operamos e distribuímos uma % para os acionistas.</p>
+  </section>
+
+  <section id="cadastro">
+    <h2>Cadastro</h2>
+    <form>
+      <input type="text" placeholder="Nome completo" required>
+      <input type="text" placeholder="Email" required>
+      <input type="password" placeholder="Criar senha" required>
+      <input type="submit" value="Cadastrar">
+    </form>
+  </section>
+
+  <section id="login">
+    <h2>Login</h2>
+    <form onsubmit="simularLogin(event)">
+      <input type="text" placeholder="Email" required>
+      <input type="password" placeholder="Senha" required>
+      <input type="submit" value="Entrar">
+    </form>
+  </section>
+
+  <section class="dashboard" id="dashboard">
+    <h2>Área Restrita - Rendimento Mensal</h2>
+    <p>Bem-vindo! Aqui estão os seus rendimentos simulados:</p>
+    <ul>
+      <li>📅 Maio: + R$ 240,00</li>
+      <li>📅 Junho: + R$ 252,00</li>
+      <li>📅 Julho: + R$ 260,00 (estimado)</li>
+    </ul>
+  </section>
+
+  <footer>
+    &copy; 2025 BTC Invest. Todos os direitos reservados.
+  </footer>
+</body>
+</html>
