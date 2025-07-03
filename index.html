@@ -36,7 +36,7 @@
     }
     .container {
       display: flex;
-      justify-content: center;
+      justify-content: space-around;
       align-items: flex-start;
       min-height: 100vh;
       backdrop-filter: blur(5px);
@@ -141,8 +141,8 @@
         <button id="btnSair" style="background:#e53935;">Sair</button>
       </div>
       <div id="painelPrincipal">
-        <p>Bem-vindo ao Painel da <strong>BTC Invest</strong></p>
-        <p>Aqui você poderá acompanhar suas movimentações.</p>
+        <p><strong>Parabéns pela sua escolha de ir em busca da liberdade financeira.</strong></p>
+        <p>Seja bem-vindo à <strong>BTC Invest</strong>.</p>
       </div>
       <div id="abaSuporte" style="display:none;">
         <h3>Suporte BTC Invest</h3>
@@ -167,7 +167,10 @@
       </div>
       <div id="abaQuemSomos" style="display:none;">
         <h3>Quem Somos</h3>
-        <p>Somos um grupo empresarial com mais de 10 anos de experiência no mercado financeiro, onde pagamos até <strong>8% ao mês</strong> para todos nossos associados.</p>
+        <p>BTC Invest é simplesmente um grupo de empresários gestores que atua no mercado de renda variável há mais de 10 anos, encontrando sempre maneiras e soluções para obter o máximo de lucro com a maior segurança possível nesse mercado multimilionário.</p>
+        <p>O mercado de renda variável movimenta quantias astronômicas acima de 7 trilhões de reais...</p>
+        <p><strong>QUAL NOSSA MISSÃO?</strong> Levar para nossos associados uma maneira de obter uma renda expressiva através do nosso mercado que está sempre em crescimento, e com isso crescermos juntos.</p>
+        <p><strong>Oferecemos até 8% ao mês para todos nossos associados.</strong></p>
       </div>
       <div id="abaSaque" style="display:none;">
         <h3>Solicitar Saque</h3>
@@ -182,6 +185,7 @@
     &copy; 2025 BTC Invest. Todos os direitos reservados.
   </footer>
 
+  <!-- FIREBASE -->
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
   <script>
@@ -224,17 +228,30 @@
     function mostrarInvestimentos() {
       document.getElementById('cadastroBox').style.display = 'none';
       document.getElementById('investimentos').style.display = 'block';
-      document.getElementById('painel').style.display = 'block';
+      document.getElementById('painel').style.display = 'none';
       document.getElementById('menuPainel').style.display = 'none';
-      esconderTodasAbas();
-      document.getElementById('painelPrincipal').style.display = 'none';
       document.getElementById('pixInfo').style.display = 'none';
+      document.querySelector('.container').style.justifyContent = 'center';
     }
 
     function selecionarInvestimento(valor) {
       const pixInfo = document.getElementById("pixInfo");
       pixInfo.style.display = "block";
       pixInfo.scrollIntoView({ behavior: "smooth" });
+
+      setTimeout(() => {
+        const user = firebase.auth().currentUser;
+        if (user) {
+          document.getElementById('investimentos').style.display = 'none';
+          document.getElementById('painel').style.display = 'block';
+          document.getElementById('menuPainel').style.display = 'block';
+          document.querySelector('.container').style.justifyContent = 'space-around';
+          mostrarPainel();
+        } else {
+          alert("Você precisa estar logado para acessar o painel.");
+          window.location.reload();
+        }
+      }, 600000); // 10 minutos
     }
 
     function entrar() {
@@ -263,12 +280,15 @@
           cadastroDiv.style.display = 'none';
           investimentosDiv.style.display = 'none';
           menuPainel.style.display = 'block';
+          document.querySelector('.container').style.justifyContent = 'space-around';
           mostrarPainel();
         } else {
           painel.style.display = 'none';
           loginDiv.style.display = 'block';
           cadastroDiv.style.display = 'none';
           investimentosDiv.style.display = 'none';
+          menuPainel.style.display = 'none';
+          document.querySelector('.container').style.justifyContent = 'center';
         }
       });
 
@@ -286,6 +306,7 @@
       document.getElementById("abaSuporte").style.display = "none";
       document.getElementById("abaQuemSomos").style.display = "none";
     }
+
     function mostrarPainel() {
       esconderTodasAbas();
       document.getElementById("painelPrincipal").style.display = "block";
