@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background: url('https://images.unsplash.com/photo-1554224154-22dec7ec8818?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
+      background: url('background.png') no-repeat center center fixed;
       background-size: cover;
       padding-top: 80px;
       padding-bottom: 60px;
@@ -36,7 +36,7 @@
     }
     .container {
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       align-items: flex-start;
       min-height: 100vh;
       backdrop-filter: blur(5px);
@@ -80,14 +80,6 @@
       color: red;
       text-align: center;
     }
-    #investimentos button {
-      width: 100%;
-      margin-top: 10px;
-    }
-    #menuPainel button {
-      width: auto;
-      margin-right: 10px;
-    }
   </style>
 </head>
 <body>
@@ -110,75 +102,9 @@
       <h2>Criação de Conta</h2>
       <input type="text" id="nomeCompleto" placeholder="Nome completo" />
       <input type="text" id="cpf" placeholder="CPF" />
-      <input type="text" id="endereco" placeholder="Endereço" />
-      <input type="text" id="pixChave" placeholder="Chave Pix" />
       <input type="email" id="novoEmail" placeholder="Email" />
       <input type="password" id="novaSenha" placeholder="Senha" />
       <button onclick="criarConta()">Criar Conta</button>
-    </div>
-
-    <div id="investimentos" class="box" style="display:none;">
-      <h2>Escolha seu investimento</h2>
-      <button onclick="selecionarInvestimento(500)">Investir R$500</button>
-      <button onclick="selecionarInvestimento(1000)">Investir R$1000</button>
-      <button onclick="selecionarInvestimento(1500)">Investir R$1500</button>
-      <button onclick="selecionarInvestimento(3000)">Investir R$3000</button>
-      <div id="pixInfo" style="display:none; margin-top:20px;">
-        <p><strong>Chave PIX:</strong> btcinvestbr@gmail.com</p>
-        <p>Encaminhe o comprovante para o suporte:</p>
-        <a href="https://t.me/Suportbtcinvest" target="_blank" style="display:inline-block; margin-top:10px; background:#0088cc; color:#fff; padding:12px 20px; text-decoration:none; border-radius:8px; font-weight:bold;">Enviar Comprovante</a>
-      </div>
-    </div>
-
-    <div id="painel" class="box" style="display:none;">
-      <h2>BTC Invest - Painel do Investidor</h2>
-      <div style="margin-bottom: 20px;" id="menuPainel">
-        <button onclick="mostrarPainel()">Painel</button>
-        <button onclick="mostrarRendimentos()">Rendimentos</button>
-        <button onclick="mostrarSaque()">Saque</button>
-        <button onclick="mostrarSuporte()">Suporte</button>
-        <button onclick="mostrarQuemSomos()">Quem somos</button>
-        <button id="btnSair" style="background:#e53935;">Sair</button>
-      </div>
-      <div id="painelPrincipal">
-        <p><strong>Parabéns pela sua escolha de ir em busca da liberdade financeira.</strong></p>
-        <p>Seja bem-vindo à <strong>BTC Invest</strong>.</p>
-      </div>
-      <div id="abaSuporte" style="display:none;">
-        <h3>Suporte BTC Invest</h3>
-        <p>Para falar com nosso time de suporte, clique no botão abaixo:</p>
-        <a href="https://t.me/Suportbtcinvest" target="_blank" style="display:inline-block; margin-top:20px; background:#0088cc; color:#fff; padding:12px 20px; text-decoration:none; border-radius:8px; font-weight:bold;">Falar com Suporte no Telegram</a>
-      </div>
-      <div id="abaRendimentos" style="display:none;">
-        <h3>Rendimentos Mensais</h3>
-        <table border="1" cellpadding="10" style="border-collapse: collapse; width: 100%; background-color:#fff;">
-          <thead style="background:#eee;">
-            <tr><th>Mês</th><th>Rentabilidade</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Janeiro</td><td>6.5%</td></tr>
-            <tr><td>Fevereiro</td><td>7.1%</td></tr>
-            <tr><td>Março</td><td>7.8%</td></tr>
-            <tr><td>Abril</td><td>6.9%</td></tr>
-            <tr><td>Maio</td><td>8.0%</td></tr>
-            <tr><td>Junho</td><td>7.6%</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div id="abaQuemSomos" style="display:none;">
-        <h3>Quem Somos</h3>
-        <p>BTC Invest é simplesmente um grupo de empresários gestores que atua no mercado de renda variável há mais de 10 anos, encontrando sempre maneiras e soluções para obter o máximo de lucro com a maior segurança possível nesse mercado multimilionário.</p>
-        <p>O mercado de renda variável movimenta quantias astronômicas acima de 7 trilhões de reais...</p>
-        <p><strong>QUAL NOSSA MISSÃO?</strong> Levar para nossos associados uma maneira de obter uma renda expressiva através do nosso mercado que está sempre em crescimento, e com isso crescermos juntos.</p>
-        <p><strong>Oferecemos até 8% ao mês para todos nossos associados.</strong></p>
-      </div>
-      <div id="abaSaque" style="display:none;">
-        <h3>Solicitar Saque</h3>
-        <p>Você pode solicitar um saque com taxa de <strong>3%</strong> sobre o valor.</p>
-        <input type="number" id="valorSaque" placeholder="Valor a sacar (R$)" />
-        <button onclick="calcularSaque()">Calcular Valor Líquido</button>
-        <p id="resultadoSaque" style="margin-top:15px; font-weight:bold;"></p>
-      </div>
     </div>
   </div>
   <footer>
@@ -209,49 +135,19 @@
     function criarConta() {
       const nome = document.getElementById("nomeCompleto").value.trim();
       const cpf = document.getElementById("cpf").value.trim();
-      const endereco = document.getElementById("endereco").value.trim();
-      const pix = document.getElementById("pixChave").value.trim();
       const email = document.getElementById("novoEmail").value.trim();
       const senha = document.getElementById("novaSenha").value.trim();
 
-      if (!nome || !cpf || !endereco || !pix || !email || !senha) {
+      if (!nome || !cpf || !email || !senha) {
         alert("Por favor, preencha todos os campos.");
         return;
       }
       auth.createUserWithEmailAndPassword(email, senha)
         .then(() => {
-          mostrarInvestimentos();
+          alert("Conta criada com sucesso!");
+          location.reload();
         })
         .catch(err => alert(err.message));
-    }
-
-    function mostrarInvestimentos() {
-      document.getElementById('cadastroBox').style.display = 'none';
-      document.getElementById('investimentos').style.display = 'block';
-      document.getElementById('painel').style.display = 'none';
-      document.getElementById('menuPainel').style.display = 'none';
-      document.getElementById('pixInfo').style.display = 'none';
-      document.querySelector('.container').style.justifyContent = 'center';
-    }
-
-    function selecionarInvestimento(valor) {
-      const pixInfo = document.getElementById("pixInfo");
-      pixInfo.style.display = "block";
-      pixInfo.scrollIntoView({ behavior: "smooth" });
-
-      setTimeout(() => {
-        const user = firebase.auth().currentUser;
-        if (user) {
-          document.getElementById('investimentos').style.display = 'none';
-          document.getElementById('painel').style.display = 'block';
-          document.getElementById('menuPainel').style.display = 'block';
-          document.querySelector('.container').style.justifyContent = 'space-around';
-          mostrarPainel();
-        } else {
-          alert("Você precisa estar logado para acessar o painel.");
-          window.location.reload();
-        }
-      }, 600000); // 10 minutos
     }
 
     function entrar() {
@@ -266,78 +162,12 @@
     }
 
     window.onload = () => {
-      const painel = document.getElementById('painel');
-      const loginDiv = document.getElementById('loginBox');
-      const cadastroDiv = document.getElementById('cadastroBox');
-      const investimentosDiv = document.getElementById('investimentos');
-      const menuPainel = document.getElementById('menuPainel');
-      const btnSair = document.getElementById('btnSair');
-
       auth.onAuthStateChanged(user => {
         if (user) {
-          painel.style.display = 'block';
-          loginDiv.style.display = 'none';
-          cadastroDiv.style.display = 'none';
-          investimentosDiv.style.display = 'none';
-          menuPainel.style.display = 'block';
-          document.querySelector('.container').style.justifyContent = 'space-around';
-          mostrarPainel();
-        } else {
-          painel.style.display = 'none';
-          loginDiv.style.display = 'block';
-          cadastroDiv.style.display = 'none';
-          investimentosDiv.style.display = 'none';
-          menuPainel.style.display = 'none';
-          document.querySelector('.container').style.justifyContent = 'center';
+          alert("Login realizado com sucesso!");
         }
       });
-
-      btnSair.onclick = () => {
-        if (confirm("Deseja realmente sair?")) {
-          auth.signOut();
-        }
-      };
     };
-
-    function esconderTodasAbas() {
-      document.getElementById("painelPrincipal").style.display = "none";
-      document.getElementById("abaRendimentos").style.display = "none";
-      document.getElementById("abaSaque").style.display = "none";
-      document.getElementById("abaSuporte").style.display = "none";
-      document.getElementById("abaQuemSomos").style.display = "none";
-    }
-
-    function mostrarPainel() {
-      esconderTodasAbas();
-      document.getElementById("painelPrincipal").style.display = "block";
-    }
-    function mostrarRendimentos() {
-      esconderTodasAbas();
-      document.getElementById("abaRendimentos").style.display = "block";
-    }
-    function mostrarSaque() {
-      esconderTodasAbas();
-      document.getElementById("abaSaque").style.display = "block";
-    }
-    function mostrarSuporte() {
-      esconderTodasAbas();
-      document.getElementById("abaSuporte").style.display = "block";
-    }
-    function mostrarQuemSomos() {
-      esconderTodasAbas();
-      document.getElementById("abaQuemSomos").style.display = "block";
-    }
-
-    function calcularSaque() {
-      const valor = parseFloat(document.getElementById("valorSaque").value);
-      if (isNaN(valor) || valor <= 0) {
-        document.getElementById("resultadoSaque").textContent = "Digite um valor válido.";
-        return;
-      }
-      const taxa = 0.03;
-      const liquido = valor - (valor * taxa);
-      document.getElementById("resultadoSaque").textContent = `Você receberá R$ ${liquido.toFixed(2)} após a taxa de 3%.`;
-    }
   </script>
 </body>
 </html>
